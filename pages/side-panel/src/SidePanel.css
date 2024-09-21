@@ -1,30 +1,208 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+  color: #333;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 700;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.blue-dot {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  height: 100%;
-  padding: 1rem;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
 }
 
-.App-logo {
-  height: 50vmin;
-  margin-bottom: 1rem;
+#selectVideoButton {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.App-header {
-  height: 100%;
+#selectVideoButton:hover {
+  background-color: #0056b3;
+}
+
+#videoElementId {
+  margin-top: 20px;
+  font-size: 16px;
+  font-style: italic;
+  color: #777;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 95vh;
+  box-sizing: border-box;
 }
 
-code {
-  background: rgba(148, 163, 184, 0.5);
-  border-radius: 0.25rem;
-  padding: 0.2rem 0.5rem;
+#imageCount {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#frameContainer {
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  background-color: #fafafa;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 10px;
+  max-height: calc(3 * (70px + 10px));
+  /* Height of 5 rows including gaps */
+  overflow-y: auto;
+  min-height: 100px;
+}
+
+.frameItem {
+  width: 100px;
+  height: 70px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#generateButton {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#generateButton:hover {
+  background-color: #218838;
+}
+
+#emailInput {
+  display: block;
+  width: 90%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e9f5ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grabbed-frame {
+  cursor: pointer;
+}
+
+#bottom-section {
+  margin-top: auto;
+}
+
+#image-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#overlay-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#selected-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* display: none; */
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#generate3DVideoButton {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  /* Gradient background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#generate3DVideoButton:hover {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  /* Hover effect with reversed gradient */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  /* Slight lift on hover */
+}
+
+#mask-generation-button-container {
+  display: none;
+  justify-content: end;
+  margin-top: 20px;
 }
