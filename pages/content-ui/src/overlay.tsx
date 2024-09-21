@@ -160,9 +160,18 @@ const Overlay: React.FC<OverlayProps> = ({ videoElement, onClose, userId, flow }
 
   const handleConfirmNo = () => {
     setNextStepText('Drag the dots to the desired positions');
-    setMaskSrc(null);
     setShowMask(false);
-    setShowGenerateButton(false);
+    const initialDots = [
+      { x: (80 / stageSize.width) * 100, y: (80 / stageSize.height) * 100 }, // Closer to top-left
+      { x: (stageSize.width / 3 / stageSize.width) * 100, y: (stageSize.height / 3 / stageSize.height) * 100 }, // Closer to center
+      { x: (stageSize.width / 2 / stageSize.width) * 100, y: (stageSize.height / 2.5 / stageSize.height) * 100 }, // Slightly to the right and down
+    ];
+
+    // Set the dots state to reappear
+    setDots(initialDots);
+    setIsGenerating(false);
+    // Ensure the generate button is shown again if needed
+    setShowGenerateButton(true);
   };
 
   return (
